@@ -1,0 +1,59 @@
+<!-- START OF FILE schedule.html -->
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Афиша - Сеть Кинотеатров</title>
+    <link rel="stylesheet" href="css/main.css">
+</head>
+<body>
+    <div id="header-placeholder"></div>
+
+    <main class="schedule-page">
+        <h1>Афиша</h1>
+
+        <section class="filters">
+
+            <button class="filter-toggle-desktop" id="filter-toggle-desktop-btn" aria-label="Показать/скрыть фильтры" aria-expanded="false">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M12 1v2m0 18v2M4.22 4.22l1.42 1.42m12.72 12.72l1.42 1.42M1 12h2m18 0h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/>
+                    <circle cx="12" cy="12" r="4"/>
+                    <path d="M16.88 6.12A6.5 6.5 0 117.12 17.88"/>
+                    <path d="M17.88 7.12A6.5 6.5 0 116.12 16.88"/>
+                </svg>
+            </button>
+
+            <div class="filters-panel-desktop" id="filters-panel-desktop">
+                <div class="filter-options">
+                    <div class="filter-group"> <label for="date-filter">Дата:</label> <input type="date" id="date-filter"> </div>
+                    <div class="filter-group"> <label for="genre-filter">Жанр:</label> <select id="genre-filter"> <option value="all">Все жанры</option> </select> </div>
+                    <div class="filter-group"> <label for="age-filter">Возраст:</label> <select id="age-filter"> <option value="all">Любой</option> <option value="0+">0+</option> <option value="6+">6+</option> <option value="12+">12+</option> <option value="16+">16+</option> <option value="18+">18+</option> </select> </div>
+                    <button id="apply-filters-desktop">Применить</button>
+                </div>
+            </div>
+
+            <button class="filter-toggle-mobile" aria-label="Показать/скрыть фильтры" aria-expanded="false">Фильтры</button>
+
+            <div class="filters-options-mobile" id="filters-options-mobile">
+                 <div class="filter-options">
+                    <div class="filter-group"> <label for="date-filter-mobile">Дата:</label> <input type="date" id="date-filter-mobile"> </div>
+                    <div class="filter-group"> <label for="genre-filter-mobile">Жанр:</label> <select id="genre-filter-mobile"> <option value="all">Все жанры</option> </select> </div>
+                    <div class="filter-group"> <label for="age-filter-mobile">Возраст:</label> <select id="age-filter-mobile"> <option value="all">Любой</option> <option value="0+">0+</option> <option value="6+">6+</option> <option value="12+">12+</option> <option value="16+">16+</option> <option value="18+">18+</option> </select> </div>
+                    <button id="apply-filters-mobile">Применить</button>
+                 </div>
+            </div>
+
+        </section>
+
+        <section class="poster-grid">
+        </section>
+    </main>
+
+    <div id="footer-placeholder"></div>
+    <script src="js/commonLoader.js"></script>
+    <script src="js/dataLoader.js"></script>
+    <script src="js/schedule.js"></script>
+</body>
+</html>
+<!-- END OF FILE schedule.html -->

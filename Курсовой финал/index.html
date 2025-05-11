@@ -1,0 +1,81 @@
+<!-- --- START OF FILE index.html (Новая структура) --- -->
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Сеть Кинотеатров - Главная</title>
+    <link rel="stylesheet" href="css/main.css"> 
+</head>
+<body>
+    <div id="header-placeholder"></div>
+
+    <main>
+
+        <section class="recommendations">
+
+            <div class="slider-container recommendations-slider-container">
+                <div class="slides recommendations-slides">
+                </div>
+
+                <div class="slider-controls recommendations-controls">
+                    <button class="slider-btn prev rec-prev" aria-label="Предыдущий слайд">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M15 18L9 12L15 6" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                    </button>
+                    <div class="slider-dots recommendations-dots">
+                    </div>
+                    <button class="slider-btn next rec-next" aria-label="Следующий слайд">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M9 18L15 12L9 6" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                    </button>
+                </div>
+
+                <div class="recommendation-content-overlay" id="rec-content-overlay">
+                    <div class="slide-text">
+                        <h2 id="rec-title-overlay"></h2>
+                        <p id="rec-description-overlay"></p>
+                    </div>
+                    <a href="#" class="details-button" id="rec-details-button-overlay">Подробнее</a>
+                </div>
+
+            </div>
+
+            <div class="recommendation-content-below" id="rec-content-below">
+                <div class="slide-text">
+                    <h2 id="rec-title-below"></h2>
+                    <p id="rec-description-below"></p>
+                </div>
+                <a href="#" class="details-button" id="rec-details-button-below">Подробнее</a>
+            </div>
+
+        </section>
+
+
+        <section class="news">
+            <h2 class="section-title">Новости</h2>
+            <div class="slider-container news-slider-container">
+                <div class="slides news-slides">
+                </div>
+                 <div class="slider-controls news-controls">
+                     <button class="slider-btn prev news-prev" aria-label="Предыдущая новость">
+                         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M15 18L9 12L15 6" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                     </button>
+                    <div class="slider-dots news-dots">
+                    </div>
+                    <button class="slider-btn next news-next" aria-label="Следующая новость">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M9 18L15 12L9 6" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                    </button>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <div id="footer-placeholder"></div>
+
+    <script src="js/commonLoader.js"></script>
+    <script src="js/dataLoader.js"></script>
+    <script src="js/slider.js"></script>
+    <script src="js/home.js"></script>
+</body>
+</html>
+<!-- --- END OF FILE index.html --- -->

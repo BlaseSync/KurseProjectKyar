@@ -1,0 +1,69 @@
+<!-- --- START OF FILE movie-details.html --- -->
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Название фильма - Сеть Кинотеатров</title>
+    <link rel="stylesheet" href="css/main.css">
+</head>
+<body>
+    <div id="header-placeholder"></div>
+
+    <main class="movie-detail-page">
+        <section class="movie-hero">
+             <img src="" alt="" id="movie-hero-image">
+            <div class="hero-overlay"></div>
+            <button class="play-trailer" id="play-trailer-btn" aria-label="Смотреть трейлер">
+                <svg width="80" height="80" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M5 3L19 12L5 21V3Z" fill="white" stroke="white" stroke-width="1" stroke-linejoin="round"/></svg>
+            </button>
+        </section>
+
+        <section class="movie-info">
+            <h1 id="movie-title">Название фильма</h1>
+
+            <div class="movie-meta">
+                <p id="movie-genres">Жанры</p>
+                <p id="movie-release">Премьера: дата</p>
+                <p id="movie-duration">Продолжительность: мин.</p>
+                <p id="movie-age">Возраст</p>
+            </div>
+
+            <p class="director-info"><strong>Режиссер:</strong> <span id="movie-director">Имя</span></p>
+
+            <h2>Описание</h2>
+            <p id="movie-description">Описание фильма...</p>
+
+            <section class="movie-schedule-section" id="movie-schedule" style="display: none;">
+                <h2>Расписание сеансов</h2>
+                <div class="schedule-controls">
+                    <label for="movie-date-selector">Выберите дату:</label>
+                    <select id="movie-date-selector" aria-label="Выбор даты сеанса">
+                    </select>
+                </div>
+                <div id="movie-showtimes-list" class="showtimes-list">
+                    <p class="no-showtimes-message" style="display: none;">Нет сеансов на выбранную дату.</p>
+                </div>
+                 <p class="no-schedule-message" style="display: none;">К сожалению, для этого фильма нет доступных сеансов.</p>
+            </section>
+
+        </section>
+
+        <div id="trailer-modal" class="modal">
+            <div class="modal-content">
+                <button class="close-modal" id="close-trailer-modal" aria-label="Закрыть трейлер">×</button>
+                <div class="video-container">
+                    <iframe id="trailer-iframe" width="560" height="315" src="" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <div id="footer-placeholder"></div>
+
+    <script src="js/commonLoader.js"></script>
+    <script src="js/dataLoader.js"></script>
+    <script src="js/moviePage.js"></script>
+</body>
+</html>
+<!-- --- END OF FILE movie-details.html --- -->

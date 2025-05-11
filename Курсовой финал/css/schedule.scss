@@ -1,0 +1,249 @@
+// --- START OF FILE css/schedule.scss ---
+
+$filter-bg: #1a1a1a;
+$filter-border: #555;
+$filter-text: #ccc;
+$filter-label-text: #888;
+$filter-input-bg: #333;
+$filter-input-border: #444;
+$filter-input-text: #eee;
+$filter-button-color: #4CAF50;
+$filter-button-hover: darken($filter-button-color, 7%);
+$desktop-panel-max-width: none;
+$mobile-options-max-height: 500px;
+$transition-speed: 0.35s;
+$desktop-breakpoint: 993px;
+$tablet-breakpoint: 768px;
+$mobile-breakpoint: 480px;
+$light-text: #fff;
+$dark-text: #333;
+$toggle-button-size: 40px;
+$toggle-button-offset: 15px;
+
+
+
+.schedule-page {
+    padding: 20px 5%;
+    h1 { text-align: center; margin-bottom: 30px; color: $light-text; }
+}
+
+
+.filters {
+    background-color: $filter-bg;
+    padding: $toggle-button-offset;
+    margin-bottom: 30px;
+    border-radius: 8px;
+    position: relative;
+}
+
+
+.filter-toggle-desktop {
+    position: relative;
+    top: 0; left: 0;
+    z-index: 15;
+    background-color: rgba(40, 40, 40, 0.8); border: 1px solid $filter-border; color: $filter-text;
+    border-radius: 50%; width: $toggle-button-size; height: $toggle-button-size; padding: 0; cursor: pointer;
+    transition: background-color 0.3s ease, border-color 0.3s ease, transform $transition-speed ease;
+    display: none;
+    align-items: center; justify-content: center; backdrop-filter: blur(2px); flex-shrink: 0;
+    svg {display: block; width: 24px; height: 24px; stroke: currentColor; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; fill: none; }
+    &:hover {background-color: rgba(60, 60, 60, 0.9); border-color: lighten($filter-border, 20%); }
+    &.active { transform: rotate(90deg); background-color: rgba(70, 70, 70, 0.95); border-color: lighten($filter-border, 40%); }
+}
+.filter-toggle-mobile {
+    display: none;
+    width: 100%; padding: 10px 15px; background-color: $dark-text; color: $light-text;
+    border: none; border-radius: 5px; cursor: pointer; font-size: 1.1em; text-align: center;
+    transition: border-radius 0.1s ease-in-out;
+
+     &[aria-expanded="true"] {
+         border-bottom-left-radius: 0;
+         border-bottom-right-radius: 0;
+     }
+}
+
+.filters-panel-desktop {
+    flex-grow: 1; min-width: 0; margin-left: 15px;
+    overflow: hidden; max-width: 0; opacity: 0; visibility: hidden;
+    transition: max-width $transition-speed ease-in-out, opacity $transition-speed * 0.8 ease-in-out, visibility 0s $transition-speed;
+    display: flex;
+    align-items: center;
+
+    &.is-visible {
+        max-width: 1500px; opacity: 1; visibility: visible;
+        transition: max-width $transition-speed ease-in-out, opacity $transition-speed ease-in-out, visibility 0s 0s;
+    }
+
+    .filter-options {
+        display: flex; flex-direction: row; flex-wrap: nowrap;
+        align-items: center;
+        gap: 15px; padding: 0;
+        width: 100%;
+        box-sizing: border-box;
+        margin-bottom: 5px;
+        margin-left: 5px;
+        .filter-group {
+             display: flex; flex-direction: column; gap: 5px; color: $filter-text;
+             label { font-weight: bold; font-size: 0.9em; color: $filter-label-text; }
+             input, select { width: auto; min-width: 130px;
+                padding: 6px 8px;
+                border: 1px solid $filter-input-border; background-color: $filter-input-bg;
+                color: $filter-input-text; border-radius: 4px;
+                font-size: 0.9em;
+            }
+             input[type="date"]::-webkit-calendar-picker-indicator { filter: invert(1); cursor: pointer; }
+        }
+        #apply-filters-desktop {
+            width: auto; margin-left: 10px; margin-top: 0;
+            height: 34px;
+            align-self: center;
+            padding: 8px 15px;
+            background-color: $filter-button-color; color: $light-text; border: none;
+            border-radius: 5px; cursor: pointer; transition: background-color 0.2s ease;
+            &:hover { background-color: $filter-button-hover; }
+       }
+    }
+}
+
+
+.filters-options-mobile {
+    position: absolute;
+    left: 15px; right: 15px;
+    top: calc(100% - 5px);
+    z-index: 10;
+    background-color: $filter-input-bg;
+    border: 1px solid $filter-input-border;
+    border-top: none;
+    border-radius: 0 0 8px 8px;
+    box-shadow: 0 5px 10px rgba(0,0,0,0.2);
+    overflow: hidden;
+
+    opacity: 0;
+    transform: translateY(-10px);
+    visibility: hidden;
+    transition: opacity $transition-speed ease-in-out,
+                transform $transition-speed ease-in-out,
+                visibility 0s $transition-speed;
+
+    &.is-visible {
+        opacity: 1; transform: translateY(0); visibility: visible;
+        transition: opacity $transition-speed ease-in-out, transform $transition-speed ease-in-out, visibility 0s 0s;
+    }
+
+    .filter-options {
+        display: flex; flex-direction: column; align-items: stretch; gap: 15px;
+        padding: 15px;
+
+        .filter-group {
+            label { color: $filter-label-text; margin-bottom: 4px; font-size: 0.85em; }
+            input, select {
+                background-color: lighten($filter-input-bg, 5%); border: 1px solid $filter-input-border;
+                color: $filter-input-text; border-radius: 4px; padding: 10px 12px; width: 100%; min-width: 0;
+                font-size: 1em; box-sizing: border-box;
+                &:focus { border-color: lighten($filter-input-border, 15%); outline: none; }
+            }
+             input[type="date"]::-webkit-calendar-picker-indicator { filter: invert(1); cursor: pointer; }
+        }
+        #apply-filters-mobile {
+             background-color: $filter-button-color; color: $light-text; width: 100%; margin-left: 0; margin-top: 10px; height: auto;
+             padding: 12px 20px; border: none; border-radius: 5px; font-size: 1.05em;
+             font-weight: 500; cursor: pointer; transition: background-color 0.2s ease;
+             &:hover { background-color: $filter-button-hover; }
+        }
+    }
+}
+
+
+.poster-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 30px;
+}
+.poster-item {
+    position: relative;
+    display: block;
+    border-radius: 10px;
+    overflow: hidden;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    &:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 8px 20px rgba(0,0,0,0.4);
+        img { transform: scale(1.05); }
+        .poster-overlay { opacity: 1; pointer-events: auto; }
+        .poster-details-button { transform: scale(1); }
+    }
+
+    img {
+        width: 100%;
+        aspect-ratio: 387.33 / 581;
+        object-fit: cover;
+        display: block;
+        transition: transform 0.4s ease;
+    }
+
+    .poster-overlay {
+        position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+        background: rgba(0, 0, 0, 0.5);
+        display: flex; align-items: center; justify-content: center;
+        opacity: 0;
+        transition: opacity 0.4s ease;
+        pointer-events: none;
+    }
+
+    .poster-details-button {
+        padding: 10px 20px;
+        border: 1px solid $light-text;
+        color: $light-text;
+        background-color: rgba(255, 255, 255, 0.2);
+        backdrop-filter: blur(5px);
+        -webkit-backdrop-filter: blur(5px);
+        border-radius: 20px;
+        text-align: center;
+        font-size: 1em;
+        cursor: pointer;
+        transform: scale(0.9);
+        transition: background-color 0.3s ease, transform 0.3s ease;
+
+        &:hover {
+            background-color: rgba(255, 255, 255, 0.4);
+        }
+    }
+}
+
+
+
+@media (min-width: #{$desktop-breakpoint}) {
+    .filters {
+        padding: $toggle-button-offset; display: flex; align-items: center;
+        min-height: $toggle-button-size + ($toggle-button-offset * 2);
+        overflow: visible;
+    }
+    .filters-panel .filter-options {
+
+        min-height: $toggle-button-size;
+
+    }
+    .filter-toggle-desktop { display: inline-flex !important; }
+    .filter-toggle-mobile { display: none !important; }
+    .filters-options-mobile { display: none !important; }
+
+
+    .poster-grid { grid-template-columns: repeat(3, 1fr); }
+}
+
+
+@media (max-width: #{$desktop-breakpoint - 1px}) {
+    .filters { overflow: visible; padding: 15px; min-height: 0; }
+    .filter-toggle-mobile { display: block !important; }
+    .filter-toggle-desktop { display: none !important; }
+    .filters-panel-desktop { display: none !important; }
+
+
+    @media (max-width: #{$tablet-breakpoint}) {
+         .poster-grid { grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 20px; }
+    }
+    @media (max-width: #{$mobile-breakpoint}) {
+         .poster-grid { grid-template-columns: repeat(2, 1fr); gap: 15px; }
+    }
+}
+// --- END OF FILE css/schedule.scss ---

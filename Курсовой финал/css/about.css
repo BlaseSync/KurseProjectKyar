@@ -1,0 +1,147 @@
+/* --- START OF FILE css/about.css --- */
+
+.about-page {
+    padding-top: 40px;
+    padding-bottom: 60px;
+    max-width: 1400px; 
+    margin: 0 auto;
+    padding-left: 1.5%;
+    padding-right: 1.5%;
+}
+
+.about-section {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 40px;
+    margin-bottom: 60px;
+    align-items: center;
+}
+
+.about-text,
+.about-image {
+    flex: 1; 
+    min-width: 300px;
+}
+
+
+.about-text h1,
+.about-text h2,
+.about-text-full h2 { 
+    color: #fff;
+    margin-bottom: 20px;
+    font-weight: 600;
+}
+
+.about-page > h1 { 
+    font-size: 2.8em;
+    text-align: center;
+    width: 100%;
+    margin-bottom: 50px; 
+}
+
+.about-text h2,
+.about-text-full h2 {
+    font-size: 2.2em; 
+    text-align: left; 
+}
+
+.about-text p,
+.about-text-full p,
+.about-text-full li {
+    color: #ddd;
+    font-size: 1.1em;
+    line-height: 1.7;
+    margin-bottom: 15px;
+    text-align: left; 
+}
+.about-text-full ul {
+    list-style: none;
+    padding-left: 0;
+    text-align: left;
+}
+.about-text-full li {
+    padding-left: 25px;
+    position: relative;
+}
+.about-text-full li::before {
+    content: '✓';
+    position: absolute;
+    left: 0;
+    top: 5px;
+    color: #4CAF50;
+    font-weight: bold;
+}
+
+
+.about-image img {
+    display: block;
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+}
+
+
+.about-section.layout-full-width {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 30px;
+}
+.about-text-full {
+    width: 100%;
+    max-width: 850px;
+    margin: 0;
+}
+
+.about-image-below {
+    width: 100%;
+    max-width: 900px;
+    margin-top: 20px;
+    align-self: center;
+}
+.about-image-below img {
+     border-radius: 10px;
+     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+}
+
+
+@media (max-width: 768px) {
+    .about-page {
+         padding-left: 4%;
+         padding-right: 4%;
+    }
+    .about-page > h1 {
+        font-size: 2.2em;
+        text-align: center;
+        margin-bottom: 40px;
+    }
+     .about-text h2,
+     .about-text-full h2 {
+        font-size: 1.8em;
+        text-align: left;
+    }
+     .about-text p,
+     .about-text-full p,
+     .about-text-full li {
+        font-size: 1em;
+        text-align: left;
+    }
+
+    .about-section:not(.layout-full-width) { 
+        flex-direction: column;
+        gap: 30px;
+    }
+    .about-section.layout-text-right {
+        flex-direction: column;
+    }
+
+    .about-text, .about-image {
+        min-width: unset;
+        width: 100%;
+    }
+     .about-text-full {
+         max-width: 100%;
+     }
+}
+
+/* --- END OF FILE css/about.css --- */

@@ -1,0 +1,235 @@
+// --- START OF FILE css/home.scss ---
+
+@import 'style'; 
+
+$light-text: #fff !default;
+$primary-bg: #000 !default;
+$secondary-text: #ccc !default;
+$dark-bg: #1a1a1a !default;
+$border-color: #333 !default;
+$details-button-bg: rgba(255, 255, 255, 0.15) !default;
+$details-button-hover-bg: rgba(255, 255, 255, 0.3) !default;
+$desktop-breakpoint: 993px !default;
+$tablet-breakpoint: 768px !default;
+$mobile-breakpoint: 480px !default;
+$content-transition-speed: 0.3s !default;
+
+.recommendations {
+    background-color: $primary-bg;
+    position: relative; 
+    margin-bottom: 30px;
+    padding-bottom: 0;
+}
+
+.recommendations .slider-container.recommendations-slider-container {
+    margin-bottom: 0;
+    position: relative;
+    border-radius: 8px;
+    overflow: hidden;
+}
+.recommendations .slides.recommendations-slides { display: flex; }
+.recommendations .slide {
+    width: 100%; aspect-ratio: 16 / 9; position: relative;
+    background-color: #111; overflow: hidden; flex-shrink: 0;
+    box-sizing: border-box;
+
+    img {
+        display: block; width: 100%; height: 100%;
+        object-fit: cover; object-position: center center;
+        position: absolute; top: 0; left: 0; z-index: 1;
+    }
+    &::after {
+        content: ''; position: absolute; bottom: 0; left: 0; width: 100%;
+        height: 85%;
+        background: linear-gradient(to top, rgba(0,0,0,0.98) 15%, rgba(0,0,0,0.85) 45%, rgba(0,0,0,0) 95%);
+        z-index: 2;
+        pointer-events: none;
+        transition: height 0.3s ease, background 0.3s ease;
+    }
+}
+
+.recommendations .slider-controls.recommendations-controls {
+    position: absolute;
+    bottom: 25%; left: 50%; transform: translateX(-50%);
+    width: auto; max-width: 90%; padding: 5px 10px;
+    z-index: 4;
+    margin: 0;
+   
+    display: flex; gap: 15px; align-items: center;
+    opacity: 1; visibility: visible;
+    transition: all $content-transition-speed ease-in-out;
+
+    .slider-btn svg { stroke-width: 1.5; stroke: $light-text; }
+    .dot { width: 8px; height: 8px; background-color: rgba(255, 255, 255, 0.4); border-radius: 50%; transition: background-color 0.3s ease; }
+    .dot.active { background-color: $light-text; }
+}
+
+.recommendations .recommendation-content-overlay {
+    position: absolute;
+    bottom: 35%;
+    left: 5%; right: 5%;
+    z-index: 3;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    gap: 15px;
+    color: $light-text;
+    pointer-events: none;
+    opacity: 1; visibility: visible;
+    transition: opacity $content-transition-speed ease-in-out, visibility $content-transition-speed ease-in-out, bottom 0.3s ease, left 0.3s ease, right 0.3s ease;
+
+    & > * { pointer-events: auto; }
+
+    .slide-text {
+        flex-grow: 1;
+        min-width: 0;
+        h2 { font-size: 2.5em; margin-bottom: 10px; text-shadow: 1px 1px 3px rgba(0,0,0,0.9); }
+        p { font-size: 1.1em; max-width: 550px; display: -webkit-box; -webkit-line-clamp: 2; line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; text-overflow: ellipsis; margin-bottom: 0; text-shadow: 1px 1px 3px rgba(0,0,0,0.9); }
+    }
+
+    .details-button {
+        padding: 12px 25px;
+        border: 1px solid $light-text; color: $light-text; background-color: $details-button-bg;
+        backdrop-filter: blur(4px); -webkit-backdrop-filter: blur(4px); border-radius: 25px; text-decoration: none;
+        transition: all 0.3s ease;
+        white-space: nowrap; flex-shrink: 0; cursor: pointer;
+        display: inline-block;
+        &:hover { background-color: $details-button-hover-bg; transform: scale(1.03); }
+    }
+}
+
+
+.recommendations .recommendation-content-below {
+    display: none;
+    flex-direction: column; align-items: center; text-align: center;
+    padding: 0 5%;
+    margin-top: 0;
+    color: $light-text;
+    opacity: 1; visibility: visible;
+    transition: opacity $content-transition-speed ease-in-out, visibility $content-transition-speed ease-in-out;
+
+    .slide-text { margin-bottom: 0;
+        h2 { font-size: 1.8em; margin: 0 0 8px 0; text-shadow: none; }
+        p { font-size: 1em; max-width: 95%; margin: 0 auto; line-height: 1.4; text-shadow: none; display: block !important; -webkit-line-clamp: unset !important; line-clamp: unset !important; overflow: visible !important; }
+    }
+    .details-button { display: none !important; }
+}
+
+
+
+
+
+@media (max-width: #{$desktop-breakpoint - 1px}) {
+
+    .recommendations { padding-bottom: 40px; }
+    .recommendations .slide::after { height: 50%; background: linear-gradient(to top, rgba(0,0,0,0.85) 5%, rgba(0,0,0,0.5) 45%, rgba(0,0,0,0) 90%); }
+
+
+    .recommendations .slider-controls.recommendations-controls {
+        position: relative !important;
+        z-index: auto !important;
+        bottom: auto !important; left: auto !important; transform: none !important;
+        margin: 25px auto 0 auto !important;
+        width: 90% !important; max-width: 450px !important;
+        padding: 8px 15px !important;
+        background-color: transparent !important; backdrop-filter: none !important;
+        justify-content: center;
+    }
+
+    .recommendations .recommendation-content-overlay {
+        justify-content: flex-end !important;
+        bottom: 26% !important;
+        left: auto !important; right: 5% !important;
+        width: auto !important;
+        gap: 0 !important;
+
+        .slide-text { display: none !important; }
+
+        .details-button {
+            padding: 10px 22px !important;
+            font-size: 1em !important;
+        }
+    }
+
+
+    .recommendations .recommendation-content-below {
+        display: flex !important;
+        margin-top: 20px !important;
+    }
+}
+
+
+@media (max-width: #{$mobile-breakpoint}) {
+
+    .recommendations { padding-bottom: 30px; }
+    .recommendations .slide::after { height: 40%; background: linear-gradient(to top, rgba(0,0,0,0.8) 5%, rgba(0,0,0,0.4) 50%, rgba(0,0,0,0) 90%); }
+
+    .recommendations .slider-controls.recommendations-controls {
+        margin-top: 20px !important;
+        padding: 6px 12px !important; gap: 12px;
+        .dot { width: 6px; height: 6px; }
+        .slider-btn svg { width: 20px; height: 20px; }
+    }
+
+    .recommendations .recommendation-content-overlay {
+        bottom: 29% !important; right: 3% !important;
+        .details-button {
+            padding: 8px 18px !important;
+            font-size: 0.9em !important;
+        }
+    }
+
+    .recommendations .recommendation-content-below {
+        margin-top: 15px !important;
+        padding: 0 3%;
+        .slide-text {
+            h2 { font-size: 1.5em !important; }
+            p { font-size: 0.9em !important; line-height: 1.3; max-width: 100%; }
+        }
+    }
+}
+
+
+.news {
+    padding: 40px 5%; color: $light-text; overflow: hidden;
+
+    .section-title { color: $light-text; margin-bottom: 30px; }
+    .slider-container.news-slider-container {
+        max-width: 1200px; margin: 0 auto; position: relative; padding-top: 5px;
+    }
+    .slides.news-slides { display: flex; margin-left: 0; }
+    .news-slides > .slide.news-slide {
+        box-sizing: border-box; flex-shrink: 0; min-width: 0;
+        padding: 0 10px;
+        flex-basis: calc(100% / 3);
+        @media (max-width: #{$desktop-breakpoint - 1px}) { flex-basis: calc(100% / 2); }
+        @media (max-width: #{$tablet-breakpoint}) { flex-basis: 100%; padding: 0 5px; }
+    }
+    .news-item {
+        background: $dark-bg; border: 1px solid $border-color; border-radius: 8px; overflow: hidden;
+        display: flex; flex-direction: column; height: 100%;
+        transition: border-color 0.3s ease, transform 0.3s ease;
+        &:hover { transform: translateY(-3px); border-color: lighten($border-color, 15%); }
+        img { width: 100%; height: 200px; object-fit: cover; display: block;
+            @media (max-width: #{$mobile-breakpoint}) { height: 180px; }
+        }
+    }
+    .news-item-content { padding: 15px; flex-grow: 1; display: flex; flex-direction: column;
+        h3 { font-size: 1.2em; margin: 0 0 10px 0; color: $light-text; line-height: 1.3; }
+        p { font-size: 0.95em; margin: 0 0 10px 0; color: $secondary-text; line-height: 1.5; display: -webkit-box; -webkit-line-clamp: 3; line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; text-overflow: ellipsis; flex-grow: 1;
+            @media (max-width: #{$mobile-breakpoint}) { -webkit-line-clamp: 2; line-clamp: 2; font-size: 0.9em;}
+        }
+    }
+    .news-item-date { font-size: 0.85em; color: darken($secondary-text, 20%); margin-top: auto; padding-top: 10px; text-align: right; }
+     .slider-controls.news-controls {
+        position: relative; bottom: auto; left: auto; transform: none;
+        width: 90%; max-width: 600px; margin: 25px auto 0;
+        display: flex; justify-content: space-between; align-items: center; padding: 0;
+        .slider-btn svg { stroke: $light-text; }
+        .slider-dots { flex-grow: 1; display: flex; justify-content: center; gap: 8px; }
+        .dot { width: 8px; height: 8px; background-color: rgba(255, 255, 255, 0.4); border-radius: 50%; }
+        .dot.active { background-color: $light-text; }
+        @media (max-width: #{$mobile-breakpoint}) { margin-top: 20px; }
+    }
+}
+// --- END OF FILE css/home.scss ---
